@@ -31,14 +31,14 @@ namespace ThreeDimentionRenderer
 
             // Front Upper
             Faces.Add(new ObjectFace(
-                new Vector3(1, 0, -1),
-                new Vector3(0, 0, -1),
+                new Vector3(1, 0, 0),
+                new Vector3(0, 0, 0),
                 new Vector3(0, 0, 1),
                 (Color)Color
                 ));
             // Fron Lower
             Faces.Add(new ObjectFace(
-                new Vector3(1, 0, -1),
+                new Vector3(1, 0, 0),
                 new Vector3(0, 0, 1),
                 new Vector3(1, 0, 1),
                 (Color)Color
@@ -46,29 +46,29 @@ namespace ThreeDimentionRenderer
 
             // Left Upper
             Faces.Add(new ObjectFace(
-                new Vector3(0, 0, -1),
-                new Vector3(0, 1, -1),
+                new Vector3(0, 0, 0),
+                new Vector3(0, 1, 0),
                 new Vector3(0, 0, 1),
                 (Color)Color
                 ));
             // Left Lower
             Faces.Add(new ObjectFace(
                 new Vector3(0, 0, 1),
-                new Vector3(0, 1, -1),
+                new Vector3(0, 1, 0),
                 new Vector3(0, 1, 1),
                 (Color)Color
                 ));
 
             // Back Upper
             Faces.Add(new ObjectFace(
-                new Vector3(0, 1, -1),
-                new Vector3(1, 1, -1),
+                new Vector3(0, 1, 0),
+                new Vector3(1, 1, 0),
                 new Vector3(1, 1, 1),
                 (Color)Color
                 ));
             // Back Lower
             Faces.Add(new ObjectFace(
-                new Vector3(0, 1, -1),
+                new Vector3(0, 1, 0),
                 new Vector3(1, 1, 1),
                 new Vector3(0, 1, 1),
                 (Color)Color
@@ -76,31 +76,31 @@ namespace ThreeDimentionRenderer
 
             // Right Upper
             Faces.Add(new ObjectFace(
-                new Vector3(1, 1, -1),
-                new Vector3(1, 0, -1),
+                new Vector3(1, 1, 0),
+                new Vector3(1, 0, 0),
                 new Vector3(1, 1, 1),
                 (Color)Color
                 ));
             // Right Lower
             Faces.Add(new ObjectFace(
                 new Vector3(1, 1, 1),
-                new Vector3(1, 0, -1),
+                new Vector3(1, 0, 0),
                 new Vector3(1, 0, 1),
                 (Color)Color
                 ));
 
             // Top Upper
             Faces.Add(new ObjectFace(
-                new Vector3(0, 0, -1),
-                new Vector3(1, 0, -1),
-                new Vector3(0, 1, -1),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 0, 0),
+                new Vector3(0, 1, 0),
                 (Color)Color
                 ));
             // Top Lower
             Faces.Add(new ObjectFace(
-                new Vector3(1, 0, -1),
-                new Vector3(1, 1, -1),
-                new Vector3(0, 1, -1),
+                new Vector3(1, 0, 0),
+                new Vector3(1, 1, 0),
+                new Vector3(0, 1, 0),
                 (Color)Color
                 ));
 
