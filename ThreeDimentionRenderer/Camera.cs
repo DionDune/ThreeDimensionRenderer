@@ -13,13 +13,13 @@ namespace ThreeDimentionRenderer
         public Vector3 WorldPosition { get; set; }
 
         public int FOV { get; set; }
-        public float Direction { get; set; }
+        public Vector2 Direction { get; set; }
 
         public Camera(Settings settings, Vector3 WorldPosition)
         {
             this.WorldPosition = WorldPosition;
             FOV = settings.cameraFOV;
-            Direction = 0;
+            Direction = new Vector2(0,90);
         }
 
 
@@ -197,14 +197,14 @@ namespace ThreeDimentionRenderer
                     float WorldAngle = (float)Math.Atan2(Vert.Y - WorldPosition.Y, Vert.X - WorldPosition.X) * (float)(180 / Math.PI);
                     float ReletiveAngle;
 
-                    if (WorldAngle < Direction)
+                    if (WorldAngle < Direction.X)
                     {
-                        AngleOffset = 360 - Direction;
+                        AngleOffset = 360 - Direction.X;
                         ReletiveAngle = WorldAngle + AngleOffset;
                     }
                     else
                     {
-                        AngleOffset = WorldAngle - Direction;
+                        AngleOffset = WorldAngle - Direction.X;
                         ReletiveAngle = AngleOffset;
                     }
                     ReletiveAngle /= FOV;
@@ -245,14 +245,14 @@ namespace ThreeDimentionRenderer
                     float WorldAngle = (float)Math.Atan2(Vert.Y - WorldPosition.Y, Vert.X - WorldPosition.X) * (float)(180 / Math.PI);
                     float ReletiveAngle;
 
-                    if (WorldAngle < Direction)
+                    if (WorldAngle < Direction.X)
                     {
-                        AngleOffset = 360 - Direction;
+                        AngleOffset = 360 - Direction.X;
                         ReletiveAngle = WorldAngle + AngleOffset;
                     }
                     else
                     {
-                        AngleOffset = WorldAngle - Direction;
+                        AngleOffset = WorldAngle - Direction.X;
                         ReletiveAngle = AngleOffset;
                     }
                     ReletiveAngle /= FOV;
@@ -283,36 +283,36 @@ namespace ThreeDimentionRenderer
 
         public void MoveForward(Settings settings)
         {
-            WorldPosition += new Vector3(settings.cameraMovementSpeed * (float)Math.Cos((Direction + (FOV / 2)) * (Math.PI / 180)),
-                                            settings.cameraMovementSpeed * (float)Math.Sin((Direction + (FOV / 2)) * (Math.PI / 180)),
+            WorldPosition += new Vector3(settings.cameraMovementSpeed * (float)Math.Cos((Direction.X + (FOV / 2)) * (Math.PI / 180)),
+                                            settings.cameraMovementSpeed * (float)Math.Sin((Direction.X + (FOV / 2)) * (Math.PI / 180)),
                                             0);
         }
         public void MoveBackward(Settings settings)
         {
-            WorldPosition -= new Vector3(settings.cameraMovementSpeed * (float)Math.Cos((Direction + (FOV / 2)) * (Math.PI / 180)),
-                                            settings.cameraMovementSpeed * (float)Math.Sin((Direction + (FOV / 2)) * (Math.PI / 180)),
+            WorldPosition -= new Vector3(settings.cameraMovementSpeed * (float)Math.Cos((Direction.X + (FOV / 2)) * (Math.PI / 180)),
+                                            settings.cameraMovementSpeed * (float)Math.Sin((Direction.X + (FOV / 2)) * (Math.PI / 180)),
                                             0);
         }
         public void Rotate(Settings settings, bool RotateLeft)
         {
             if (RotateLeft)
-                Direction -= settings.cameraRotationSpeed;
+                Direction -= new Vector2(settings.cameraRotationSpeed, 0);
             else
-                Direction += settings.cameraRotationSpeed;
+                Direction += new Vector2(settings.cameraRotationSpeed, 0);
 
             correctRotation();
         }
         private void correctRotation()
         {
-            if (Direction > 360)
+            if (Direction.X > 360)
             {
-                Direction -= ((int)Direction / 360) * 360;
+                Direction -= new Vector2( ((int)Direction.X / 360) * 360, 0);
             }
-            else if (Direction < 0)
+            else if (Direction.X < 0)
             {
-                while (Direction < 0)
+                while (Direction.X < 0)
                 {
-                    Direction += 360;
+                    Direction += new Vector2(360, 0);
                 }
             }
         }
