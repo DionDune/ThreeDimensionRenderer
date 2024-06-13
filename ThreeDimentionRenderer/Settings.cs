@@ -16,11 +16,6 @@ namespace ThreeDimentionRenderer
         public float cameraMovementSpeed { get; set; }
         public float cameraRotationSpeed { get; set; }
 
-        public Point gridDimentions { get; set; }
-        public bool gridRandomPopulated { get; set; }
-        public uint gridRandomPlaceChange { get; set; }
-        public bool gridHadDefault { get; set; }
-
         public bool objectsRandomPopulation { get; set; }
         public int objectsRandomCount { get; set; }
         public Vector3 objectSpawnRange { get; set; }
@@ -34,14 +29,8 @@ namespace ThreeDimentionRenderer
             cameraRenderWireFrames = true;
             cameraRenderFaces = true;
 
-
-            gridDimentions = new Point(1000, 1000);
-            gridRandomPopulated = false;
-            gridRandomPlaceChange = 1000;
-            gridHadDefault = true;
-
             objectsRandomPopulation = true;
-            objectsRandomCount = 200;
+            objectsRandomCount = 2000;
             objectSpawnRange = new Vector3(400, 400, 0);
         }
     }

@@ -17,7 +17,6 @@ namespace ThreeDimentionRenderer
 
         Settings settings;
         inputHandler inputHandler;
-        Grid Grid;
         List<Object> objects;
         Screen Screen;
         Camera Camera;
@@ -45,7 +44,6 @@ namespace ThreeDimentionRenderer
             random = new Random();
             settings = new Settings();
             inputHandler = new inputHandler();
-            Grid = new Grid(settings);
             objects = new List<Object>();
             if (settings.objectsRandomPopulation)
                 objects = Object.getRandom(settings.objectsRandomCount, settings.objectSpawnRange);
@@ -126,7 +124,7 @@ namespace ThreeDimentionRenderer
             _spriteBatch.Begin();
 
 
-            Camera.renderWorld(_spriteBatch, GraphicsDevice, settings, Screen, Grid, objects);
+            Camera.renderWorld(_spriteBatch, GraphicsDevice, settings, Screen, objects);
 
 
             _spriteBatch.End();
