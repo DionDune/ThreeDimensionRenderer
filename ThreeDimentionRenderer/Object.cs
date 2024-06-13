@@ -33,7 +33,7 @@ namespace ThreeDimentionRenderer
             Faces.Add(new ObjectFace(
                 new Vector3(1, 0, -1),
                 new Vector3(0, 0, -1),
-                new Vector3(0, 0, 0),
+                new Vector3(0, 0, 1),
                 (Color)Color
                 ));
             // Fron Lower
