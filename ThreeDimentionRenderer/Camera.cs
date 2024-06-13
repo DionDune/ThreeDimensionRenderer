@@ -12,7 +12,7 @@ namespace ThreeDimentionRenderer
     {
         public Vector3 WorldPosition { get; set; }
 
-        public int FOV { get; set; }
+        public Vector2 FOV { get; set; }
         public Vector2 Direction { get; set; }
 
         public Camera(Settings settings, Vector3 WorldPosition)
@@ -112,7 +112,7 @@ namespace ThreeDimentionRenderer
                         AngleOffset = WorldAngleX - Direction.X;
                         ReletiveAngle = AngleOffset;
                     }
-                    ReletiveAngle /= FOV;
+                    ReletiveAngle /= FOV.X;
 
 
                     // Y
@@ -120,10 +120,10 @@ namespace ThreeDimentionRenderer
                     float DifferenceZ = WorldPosition.Z - Vert.Z;
                     float WorldAngleY = (float)Math.Acos((double)(DifferenceZ / DistanceX)) * (float)(180 / Math.PI);
 
-                    float AngleOffsetY = (Direction.Y - (FOV / 2));
+                    float AngleOffsetY = (Direction.Y - (FOV.Y / 2));
                     float ReletiveAngleY = WorldAngleY - AngleOffsetY;
 
-                    ReletiveAngleY /= FOV;
+                    ReletiveAngleY /= FOV.Y;
 
 
                     if (ReletiveAngle >= 0 && ReletiveAngle <= 1 &&
@@ -153,14 +153,14 @@ namespace ThreeDimentionRenderer
 
         public void MoveForward(Settings settings)
         {
-            WorldPosition += new Vector3(settings.cameraMovementSpeed * (float)Math.Cos((Direction.X + (FOV / 2)) * (Math.PI / 180)),
-                                            settings.cameraMovementSpeed * (float)Math.Sin((Direction.X + (FOV / 2)) * (Math.PI / 180)),
+            WorldPosition += new Vector3(settings.cameraMovementSpeed * (float)Math.Cos((Direction.X + (FOV.X / 2)) * (Math.PI / 180)),
+                                            settings.cameraMovementSpeed * (float)Math.Sin((Direction.X + (FOV.X / 2)) * (Math.PI / 180)),
                                             0);
         }
         public void MoveBackward(Settings settings)
         {
-            WorldPosition -= new Vector3(settings.cameraMovementSpeed * (float)Math.Cos((Direction.X + (FOV / 2)) * (Math.PI / 180)),
-                                            settings.cameraMovementSpeed * (float)Math.Sin((Direction.X + (FOV / 2)) * (Math.PI / 180)),
+            WorldPosition -= new Vector3(settings.cameraMovementSpeed * (float)Math.Cos((Direction.X + (FOV.X / 2)) * (Math.PI / 180)),
+                                            settings.cameraMovementSpeed * (float)Math.Sin((Direction.X + (FOV.X / 2)) * (Math.PI / 180)),
                                             0);
         }
         public void MoveUpward(Settings settings)

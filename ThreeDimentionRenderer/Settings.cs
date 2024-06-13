@@ -10,7 +10,7 @@ namespace ThreeDimentionRenderer
 {
     internal class Settings
     {
-        public int cameraFOV { get; set; }
+        public Vector2 cameraFOV { get; set; }
         public bool cameraRenderWireFrames { get; set; }
         public bool cameraRenderFaces { get; set; }
         public float cameraMovementSpeed { get; set; }
@@ -22,7 +22,7 @@ namespace ThreeDimentionRenderer
 
         public Settings()
         {
-            cameraFOV = 120;
+            cameraFOV = new Vector2(120, 66);
             cameraMovementSpeed = 0.5f;
             cameraRotationSpeed = 1.2f;
 
@@ -30,8 +30,8 @@ namespace ThreeDimentionRenderer
             cameraRenderFaces = true;
 
             objectsRandomPopulation = true;
-            objectsRandomCount = 2000;
-            objectSpawnRange = new Vector3(400, 400, 0);
+            objectsRandomCount = 1000;
+            objectSpawnRange = new Vector3(300, 300, 0);
         }
     }
 }
