@@ -75,7 +75,6 @@ namespace ThreeDimentionRenderer
                     }
             }
         }
-
         private List<List<Point>> GetFaces(Screen Screen, GridSlot Slot)
         {
             List<List<Point>> FaceScreenPositions = new List<List<Point>>();
@@ -175,6 +174,41 @@ namespace ThreeDimentionRenderer
             }
 
             return FaceScreenPositions;
+        }
+
+
+        public void MoveForward(Settings settings)
+        {
+            WorldPosition += new Vector2(settings.cameraMovementSpeed * (float)Math.Cos((Direction + (FOV / 2)) * (Math.PI / 180)),
+                                            settings.cameraMovementSpeed * (float)Math.Sin((Direction + (FOV / 2)) * (Math.PI / 180)));
+        }
+        public void MoveBackward(Settings settings)
+        {
+            WorldPosition -= new Vector2(settings.cameraMovementSpeed * (float)Math.Cos((Direction + (FOV / 2)) * (Math.PI / 180)),
+                                            settings.cameraMovementSpeed * (float)Math.Sin((Direction + (FOV / 2)) * (Math.PI / 180)));
+        }
+        public void Rotate(Settings settings, bool RotateLeft)
+        {
+            if (RotateLeft)
+                Direction -= settings.cameraRotationSpeed;
+            else
+                Direction += settings.cameraRotationSpeed;
+
+            correctRotation();
+        }
+        private void correctRotation()
+        {
+            if (Direction > 360)
+            {
+                Direction -= ((int)Direction / 360) * 360;
+            }
+            else if (Direction < 0)
+            {
+                while (Direction < 0)
+                {
+                    Direction += 360;
+                }
+            }
         }
     }
 }

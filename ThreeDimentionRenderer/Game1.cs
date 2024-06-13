@@ -15,6 +15,7 @@ namespace ThreeDimentionRenderer
         public static Texture2D TextureWhite;
 
         Settings settings;
+        inputHandler inputHandler;
         Grid Grid;
         Screen Screen;
         Camera Camera;
@@ -41,6 +42,7 @@ namespace ThreeDimentionRenderer
         {
             random = new Random();
             settings = new Settings();
+            inputHandler = new inputHandler();
             Grid = new Grid(settings);
             Screen = new Screen(new Point(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), _spriteBatch);
             Camera = new Camera(settings, new Vector2(10, 10));
@@ -105,37 +107,7 @@ namespace ThreeDimentionRenderer
                 Exit();
 
 
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
-            {
-                Camera.WorldPosition += new Vector2(settings.cameraMovementSpeed * (float)Math.Cos((Camera.Direction + (Camera.FOV / 2)) * (Math.PI / 180)),
-                                                    settings.cameraMovementSpeed * (float)Math.Sin((Camera.Direction + (Camera.FOV / 2)) * (Math.PI / 180)));
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.S))
-            {
-                Camera.WorldPosition -= new Vector2(settings.cameraMovementSpeed * (float)Math.Cos((Camera.Direction + (Camera.FOV / 2)) * (Math.PI / 180)),
-                                                    settings.cameraMovementSpeed * (float)Math.Sin((Camera.Direction + (Camera.FOV / 2)) * (Math.PI / 180)));
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.E))
-                Camera.Direction += settings.cameraRotationSpeed;
-            else if (Keyboard.GetState().IsKeyDown(Keys.Q))
-                Camera.Direction -= settings.cameraRotationSpeed;
-            if (Camera.Direction > 360)
-            {
-                Camera.Direction -= (((int)Camera.Direction / 360) * 360);
-            }
-            else if (Camera.Direction < 0)
-            {
-                while (Camera.Direction < 0)
-                {
-                    Camera.Direction += 360;
-                }
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.T))
-                settings.cameraRenderWireFrames = !settings.cameraRenderWireFrames;
-            if (Keyboard.GetState().IsKeyDown(Keys.Y))
-                settings.cameraRenderFaces = !settings.cameraRenderFaces;
+            inputHandler.execute(settings, Camera);
 
 
 
