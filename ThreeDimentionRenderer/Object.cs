@@ -89,6 +89,23 @@ namespace ThreeDimentionRenderer
                 (Color)Color
                 ));
         }
+
+
+        public static List<Object> getRandom(int Count, Vector3 Range)
+        {
+            Random random = new Random();
+            List<Object> Objects = new List<Object>();
+
+
+            for (int i = 0; i < Count; i++)
+            {
+                Object Obj = new Object(new Vector3(random.Next(0, (int)Range.X), random.Next(0, (int)Range.Y), random.Next(0, (int)Range.Z)));
+                Objects.Add(Obj);
+            }
+
+
+            return Objects;
+        }
     }
 
     internal class ObjectFace

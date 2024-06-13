@@ -21,6 +21,10 @@ namespace ThreeDimentionRenderer
         public uint gridRandomPlaceChange { get; set; }
         public bool gridHadDefault { get; set; }
 
+        public bool objectsRandomPopulation { get; set; }
+        public int objectsRandomCount { get; set; }
+        public Vector3 objectSpawnRange { get; set; }
+
         public Settings()
         {
             cameraFOV = 120;
@@ -35,6 +39,10 @@ namespace ThreeDimentionRenderer
             gridRandomPopulated = false;
             gridRandomPlaceChange = 1000;
             gridHadDefault = true;
+
+            objectsRandomPopulation = true;
+            objectsRandomCount = 200;
+            objectSpawnRange = new Vector3(400, 400, 0);
         }
     }
 }
