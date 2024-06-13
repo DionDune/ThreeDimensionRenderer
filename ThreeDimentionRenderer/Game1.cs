@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 
 namespace ThreeDimentionRenderer
 {
@@ -17,6 +18,7 @@ namespace ThreeDimentionRenderer
         Settings settings;
         inputHandler inputHandler;
         Grid Grid;
+        List<Object> objects;
         Screen Screen;
         Camera Camera;
 
@@ -44,6 +46,8 @@ namespace ThreeDimentionRenderer
             settings = new Settings();
             inputHandler = new inputHandler();
             Grid = new Grid(settings);
+            objects = new List<Object>();
+            objects.Add(new Object(new Vector3(20, 20, 0)));
             Screen = new Screen(new Point(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), _spriteBatch);
             Camera = new Camera(settings, new Vector2(10, 10));
 
