@@ -48,8 +48,10 @@ namespace ThreeDimentionRenderer
             Grid = new Grid(settings);
             objects = new List<Object>();
             objects.Add(new Object(new Vector3(20, 20, 0)));
+            objects.Add(new Object(new Vector3(40, 40, 0)));
+            objects.Add(new Object(new Vector3(32, 30, 0)));
             Screen = new Screen(new Point(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), _spriteBatch);
-            Camera = new Camera(settings, new Vector2(10, 10));
+            Camera = new Camera(settings, new Vector3(10, 10, 0));
 
             _basicEffect = new BasicEffect(GraphicsDevice) { VertexColorEnabled = true };
             base.Initialize();
@@ -125,7 +127,7 @@ namespace ThreeDimentionRenderer
             _spriteBatch.Begin();
 
 
-            Camera.renderWorld(_spriteBatch, GraphicsDevice, settings, Screen, Grid);
+            Camera.renderWorld(_spriteBatch, GraphicsDevice, settings, Screen, Grid, objects);
 
 
             _spriteBatch.End();
