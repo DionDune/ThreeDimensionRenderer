@@ -88,6 +88,36 @@ namespace ThreeDimentionRenderer
                 new Vector3(1, 0, 1),
                 (Color)Color
                 ));
+
+            // Top Upper
+            Faces.Add(new ObjectFace(
+                new Vector3(0, 0, -1),
+                new Vector3(1, 0, -1),
+                new Vector3(0, 1, -1),
+                (Color)Color
+                ));
+            // Top Lower
+            Faces.Add(new ObjectFace(
+                new Vector3(1, 0, -1),
+                new Vector3(1, 1, -1),
+                new Vector3(0, 1, -1),
+                (Color)Color
+                ));
+
+            // Bottom Upper
+            Faces.Add(new ObjectFace(
+                new Vector3(1, 0, 1),
+                new Vector3(0, 0, 1),
+                new Vector3(0, 1, 1),
+                (Color)Color
+                ));
+            // Bottom Lower
+            Faces.Add(new ObjectFace(
+                new Vector3(1, 0, 1),
+                new Vector3(0, 1, 1),
+                new Vector3(1, 1, 1),
+                (Color)Color
+                ));
         }
 
 
