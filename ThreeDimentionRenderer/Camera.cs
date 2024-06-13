@@ -239,42 +239,60 @@ namespace ThreeDimentionRenderer
                 };
                 List<Point> FaceVertPositions = new List<Point>();
 
+
+
+
                 foreach (Vector3 Vert in FaceVerts)
                 {
+                    //X
+                    float WorldAngleX = (float)Math.Atan2(Vert.Y - WorldPosition.Y, Vert.X - WorldPosition.X) * (float)(180 / Math.PI);
+
                     float AngleOffset;
-                    float WorldAngle = (float)Math.Atan2(Vert.Y - WorldPosition.Y, Vert.X - WorldPosition.X) * (float)(180 / Math.PI);
                     float ReletiveAngle;
 
-                    if (WorldAngle < Direction.X)
+                    if (WorldAngleX < Direction.X)
                     {
                         AngleOffset = 360 - Direction.X;
-                        ReletiveAngle = WorldAngle + AngleOffset;
+                        ReletiveAngle = WorldAngleX + AngleOffset;
                     }
                     else
                     {
-                        AngleOffset = WorldAngle - Direction.X;
+                        AngleOffset = WorldAngleX - Direction.X;
                         ReletiveAngle = AngleOffset;
                     }
                     ReletiveAngle /= FOV;
 
 
-                    if (ReletiveAngle >= 0 && ReletiveAngle <= 1)
-                    {
-                        float HalfRenderHeight = (int)(180F / (Vector2.Distance(new Vector2(WorldPosition.X, WorldPosition.Y), new Vector2(Vert.X, Vert.Y)) / 100)) / 2;
+                    // Y
+                    float DistanceX = Vector2.Distance(new Vector2(Vert.X, Vert.Y), new Vector2(WorldPosition.X, WorldPosition.Y));
+                    float DifferenceZ = WorldPosition.Z - Vert.Z;
+                    float WorldAngleY = (float)Math.Acos((double)(DifferenceZ / DistanceX)) * (float)(180 / Math.PI);
 
+                    float AngleOffsetY = (Direction.Y - (FOV / 2));
+                    float ReletiveAngleY = WorldAngleY - AngleOffsetY;
+
+                    ReletiveAngleY /= FOV;
+
+
+                    if (ReletiveAngle >= 0 && ReletiveAngle <= 1 &&
+                        ReletiveAngleY >= 0 && ReletiveAngleY <= 1)
+                    {
                         FaceVertPositions.Add(new Point(
                             (int)(Screen.Dimentions.X * ReletiveAngle),
-                            (Screen.Dimentions.Y / 2) + (int)(HalfRenderHeight * Vert.Z)
+                            (int)(Screen.Dimentions.Y * ReletiveAngleY)
                             ));
                     }
                 }
 
+
+
+
                 if (FaceVertPositions.Count == 3)
-                FaceScreenPositions.Add(new ObjectFace(
-                    new Vector3(FaceVertPositions[0].X, FaceVertPositions[0].Y, 0),
-                    new Vector3(FaceVertPositions[1].X, FaceVertPositions[1].Y, 0),
-                    new Vector3(FaceVertPositions[2].X, FaceVertPositions[2].Y, 0),
-                    Face.Color));
+                    FaceScreenPositions.Add(new ObjectFace(
+                        new Vector3(FaceVertPositions[0].X, FaceVertPositions[0].Y, 0),
+                        new Vector3(FaceVertPositions[1].X, FaceVertPositions[1].Y, 0),
+                        new Vector3(FaceVertPositions[2].X, FaceVertPositions[2].Y, 0),
+                        Face.Color));
             }
 
             return FaceScreenPositions;
