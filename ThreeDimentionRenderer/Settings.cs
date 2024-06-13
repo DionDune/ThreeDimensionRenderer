@@ -23,7 +23,7 @@ namespace ThreeDimentionRenderer
         public Settings()
         {
             cameraFOV = new Vector2(120, 66);
-            cameraMovementSpeed = 0.5f;
+            cameraMovementSpeed = 0.15f;
             cameraRotationSpeed = 1.2f;
 
             cameraRenderWireFrames = true;
@@ -31,7 +31,7 @@ namespace ThreeDimentionRenderer
 
             objectsRandomPopulation = true;
             objectsRandomCount = 1000;
-            objectSpawnRange = new Vector3(300, 300, 0);
+            objectSpawnRange = new Vector3(150, 150, 2);
         }
     }
 }

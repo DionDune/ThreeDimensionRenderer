@@ -126,8 +126,8 @@ namespace ThreeDimentionRenderer
                     ReletiveAngleY /= FOV.Y;
 
 
-                    if (ReletiveAngle >= 0 && ReletiveAngle <= 1 &&
-                        ReletiveAngleY >= 0 && ReletiveAngleY <= 1)
+                    if (ReletiveAngle >= -0.3 && ReletiveAngle <= 1.3 &&
+                        ReletiveAngleY >= -0.3 && ReletiveAngleY <= 1.3)
                     {
                         FaceVertPositions.Add(new Point(
                             (int)(Screen.Dimentions.X * ReletiveAngle),
