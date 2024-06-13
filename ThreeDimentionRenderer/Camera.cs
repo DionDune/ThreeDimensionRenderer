@@ -311,12 +311,21 @@ namespace ThreeDimentionRenderer
                                             settings.cameraMovementSpeed * (float)Math.Sin((Direction.X + (FOV / 2)) * (Math.PI / 180)),
                                             0);
         }
-        public void Rotate(Settings settings, bool RotateLeft)
+        public void RotateHorizontal(Settings settings, bool RotateLeft)
         {
             if (RotateLeft)
                 Direction -= new Vector2(settings.cameraRotationSpeed, 0);
             else
                 Direction += new Vector2(settings.cameraRotationSpeed, 0);
+
+            correctRotation();
+        }
+        public void RotateVertical(Settings settings, bool RotateUp)
+        {
+            if (RotateUp)
+                Direction -= new Vector2(0, settings.cameraRotationSpeed);
+            else
+                Direction += new Vector2(0, settings.cameraRotationSpeed);
 
             correctRotation();
         }
@@ -333,6 +342,11 @@ namespace ThreeDimentionRenderer
                     Direction += new Vector2(360, 0);
                 }
             }
+
+            if (Direction.Y > 180)
+                Direction = new Vector2(Direction.X, 180);
+            else if (Direction.Y < 0)
+                Direction = new Vector2(Direction.X, 0);
         }
     }
 }

@@ -30,10 +30,16 @@ namespace ThreeDimentionRenderer
             else if (CurrentKeys.Contains(Keys.S))
                 camera.MoveBackward(settings);
 
-            if (CurrentKeys.Contains(Keys.Q))
-                camera.Rotate(settings, true);
-            else if (CurrentKeys.Contains(Keys.E))
-                camera.Rotate(settings, false);
+            if (CurrentKeys.Contains(Keys.Left))
+                camera.RotateHorizontal(settings, true);
+            else if (CurrentKeys.Contains(Keys.Right))
+                camera.RotateHorizontal(settings, false);
+            if (CurrentKeys.Contains(Keys.Up))
+                camera.RotateVertical(settings, true);
+            else if (CurrentKeys.Contains(Keys.Down))
+                camera.RotateVertical(settings, false);
+
+
             
             if (isNewPress(Keys.T, CurrentKeys) == true)
                 settings.cameraRenderWireFrames = !settings.cameraRenderWireFrames;
