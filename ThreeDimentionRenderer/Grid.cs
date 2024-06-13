@@ -25,24 +25,24 @@ namespace ThreeDimentionRenderer
             Slots = new List<List<GridSlot>>();
             SolidSlots = new List<GridSlot>();
 
-            if (settings.gridRandomPopulated)
-                for (int y = 0; y < Dimentions.Y; y++)
+            
+            for (int y = 0; y < Dimentions.Y; y++)
+            {
+                Slots.Add(new List<GridSlot>());
+                for (int x = 0; x < Dimentions.X; x++)
                 {
-                    Slots.Add(new List<GridSlot>());
-                    for (int x = 0; x < Dimentions.X; x++)
+                    if (settings.gridRandomPopulated && random.Next(0, (int)settings.gridRandomPlaceChange) == 0)
                     {
-                        if (random.Next(0, (int)settings.gridRandomPlaceChange) == 0)
-                        {
-                            Color Color = new Color(random.Next(-63, 63) * 4, random.Next(-63, 63) * 4, random.Next(-63, 63) * 4);
-                            Slots.Last().Add(new GridSlot(new Point(x, y), Color));
-                            SolidSlots.Add(Slots.Last().Last());
-                        }
-                        else
-                        {
-                            Slots.Last().Add(null);
-                        }
+                        Color Color = new Color(random.Next(-63, 63) * 4, random.Next(-63, 63) * 4, random.Next(-63, 63) * 4);
+                        Slots.Last().Add(new GridSlot(new Point(x, y), Color));
+                        SolidSlots.Add(Slots.Last().Last());
+                    }
+                    else
+                    {
+                        Slots.Last().Add(null);
                     }
                 }
+            }
             if (settings.gridHadDefault)
             {
                 for (int y = 0; y < 10; y++)

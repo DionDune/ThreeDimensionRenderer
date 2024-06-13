@@ -47,9 +47,8 @@ namespace ThreeDimentionRenderer
             inputHandler = new inputHandler();
             Grid = new Grid(settings);
             objects = new List<Object>();
-            objects.Add(new Object(new Vector3(20, 20, 0)));
-            objects.Add(new Object(new Vector3(40, 40, 0)));
-            objects.Add(new Object(new Vector3(32, 30, 0)));
+            for (int i = 0; i < 50; i++)
+                objects.Add(new Object(new Vector3(random.Next(0, 200), random.Next(0, 200), 0)));
             Screen = new Screen(new Point(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), _spriteBatch);
             Camera = new Camera(settings, new Vector3(10, 10, 0));
 

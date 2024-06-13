@@ -32,7 +32,7 @@ namespace ThreeDimentionRenderer
 
 
             gridDimentions = new Point(1000, 1000);
-            gridRandomPopulated = true;
+            gridRandomPopulated = false;
             gridRandomPlaceChange = 1000;
             gridHadDefault = true;
         }
