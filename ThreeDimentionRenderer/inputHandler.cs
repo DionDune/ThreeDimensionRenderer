@@ -29,10 +29,14 @@ namespace ThreeDimentionRenderer
                 camera.MoveForward(settings);
             else if (CurrentKeys.Contains(Keys.S))
                 camera.MoveBackward(settings);
+            if (CurrentKeys.Contains(Keys.Space))
+                camera.MoveUpward(settings);
+            else if (CurrentKeys.Contains(Keys.LeftControl))
+                camera.MoveDownward(settings);
 
-            if (CurrentKeys.Contains(Keys.Left))
+            if (CurrentKeys.Contains(Keys.Left) || CurrentKeys.Contains(Keys.Q))
                 camera.RotateHorizontal(settings, true);
-            else if (CurrentKeys.Contains(Keys.Right))
+            else if (CurrentKeys.Contains(Keys.Right) || CurrentKeys.Contains(Keys.E))
                 camera.RotateHorizontal(settings, false);
             if (CurrentKeys.Contains(Keys.Up))
                 camera.RotateVertical(settings, true);

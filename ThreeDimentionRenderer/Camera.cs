@@ -311,6 +311,14 @@ namespace ThreeDimentionRenderer
                                             settings.cameraMovementSpeed * (float)Math.Sin((Direction.X + (FOV / 2)) * (Math.PI / 180)),
                                             0);
         }
+        public void MoveUpward(Settings settings)
+        {
+            WorldPosition -= new Vector3(0,0,settings.cameraMovementSpeed);
+        }
+        public void MoveDownward(Settings settings)
+        {
+            WorldPosition += new Vector3(0, 0, settings.cameraMovementSpeed);
+        }
         public void RotateHorizontal(Settings settings, bool RotateLeft)
         {
             if (RotateLeft)
