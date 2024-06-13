@@ -35,7 +35,7 @@ namespace ThreeDimentionRenderer
                 slotListOrdered.Add((Grid.SolidSlots[0], Vector2.Distance(Grid.SolidSlots[0].Position.ToVector2(), new Vector2(WorldPosition.X, WorldPosition.Y))));
             }
             // Add initial object
-            if (Grid.SolidSlots.Count > 0)
+            if (Objects.Count > 0)
             {
                 float objectDistanceX = Vector2.Distance(new Vector2(Objects[0].Position.X, Objects[0].Position.Y), new Vector2(WorldPosition.X, WorldPosition.Y));
                 float objectDistance = Vector2.Distance(new Vector2(objectDistanceX, WorldPosition.Z - Objects[0].Position.Z), new Vector2(0,0));
