@@ -70,9 +70,9 @@ namespace ThreeDimentionRenderer
                 {
                     foreach (ObjectFace Face in Faces)
                     {
-                        Game1.DrawLineBetween(spriteBatch, new Vector2(Face.Vertex1.X, Face.Vertex1.Y), new Vector2(Face.Vertex2.X, Face.Vertex2.Y), Color.Pink, 1f);
-                        Game1.DrawLineBetween(spriteBatch, new Vector2(Face.Vertex1.X, Face.Vertex1.Y), new Vector2(Face.Vertex3.X, Face.Vertex3.Y), Color.Pink, 1f);
-                        Game1.DrawLineBetween(spriteBatch, new Vector2(Face.Vertex2.X, Face.Vertex2.Y), new Vector2(Face.Vertex3.X, Face.Vertex3.Y), Color.Pink, 1f);
+                        Game1.DrawLineBetween(spriteBatch, new Vector2(Face.Vertex1.X, Face.Vertex1.Y), new Vector2(Face.Vertex2.X, Face.Vertex2.Y), Color.White, 1f);
+                        Game1.DrawLineBetween(spriteBatch, new Vector2(Face.Vertex1.X, Face.Vertex1.Y), new Vector2(Face.Vertex3.X, Face.Vertex3.Y), Color.White, 1f);
+                        Game1.DrawLineBetween(spriteBatch, new Vector2(Face.Vertex2.X, Face.Vertex2.Y), new Vector2(Face.Vertex3.X, Face.Vertex3.Y), Color.White, 1f);
                     }
                 }
             }
